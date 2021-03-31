@@ -142,10 +142,10 @@ function addPagination(list) {
     addPagination(newList);
 
 //4.Handle No Search Matches
-    //secondConditional - if the value is 
+    //secondConditional - if the value is 0
     if (newList.length === 0) {
         const studentList = document.querySelector('.student-list');
-        studentList.innerHTML = '<h2>No results found...Try again! </h2>';
+        studentList.innerHTML = '<h2>No results found... Try again! </h2>';
         studentList.style.color = 'red';
     }
 }
