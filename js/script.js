@@ -39,8 +39,10 @@ This function will create and insert/append the elements needed for the paginati
 
 
 function addPagination(list) {
-    const buttonsPage = Math.ceil(list.length / itemsPerPage);
+    let buttonsPage = Math.ceil(list.length / 9);
+
     const linkList = document.querySelector('.link-list');
+ 
     linkList.innerHTML = '';
 
     for (let i = 1; i <= buttonsPage; i++) {
@@ -53,22 +55,22 @@ function addPagination(list) {
         linkList.insertAdjacentHTML('beforeend', buttonsDisplay);
     }
 
-    const buttons = document.querySelectorAll('button')[1];
-    
+    let buttons = document.querySelectorAll('button')[0];
+      buttons.className = 'active';
+ 
 
     //Create an event listener to listen for clicks on the `link-list` variable
     linkList.addEventListener('click', (e) => {
        
         if (e.target.tagName === 'BUTTON') {
-            buttons.className += "active";
             buttons.classList.remove('active');
             let clickedNumber = e.target.textContent;
-            //Call the `showPage` function passing the `list` parameter and the page number to display as arguments.
+            clickedNumber.className = 'active';
             showPage(list, clickedNumber);
         }
     });
 }
-
+addPagination(data);
 /* ************ */
 /* Extra Credit */
 /* ************ */
@@ -140,4 +142,4 @@ search.addEventListener('keyup', () => {
 
 // Call functions
 showPage(data, 1)
-addPagination(data);
+
