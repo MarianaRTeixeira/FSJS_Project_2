@@ -54,14 +54,13 @@ function addPagination(list) {
     }
 
     const buttons = document.querySelectorAll('button')[1];
-    buttons.className += "active";
+    
 
     //Create an event listener to listen for clicks on the `link-list` variable
     linkList.addEventListener('click', (e) => {
        
         if (e.target.tagName === 'BUTTON') {
-
-    
+            buttons.className += "active";
             buttons.classList.remove('active');
             let clickedNumber = e.target.textContent;
             //Call the `showPage` function passing the `list` parameter and the page number to display as arguments.
