@@ -39,10 +39,9 @@ This function will create and insert/append the elements needed for the paginati
 
 
 function addPagination(list) {
+    
     let buttonsPage = Math.ceil(list.length / 9);
-
     const linkList = document.querySelector('.link-list');
- 
     linkList.innerHTML = '';
 
     for (let i = 1; i <= buttonsPage; i++) {
@@ -63,10 +62,10 @@ function addPagination(list) {
     linkList.addEventListener('click', (e) => {
        
         if (e.target.tagName === 'BUTTON') {
-            buttons.classList.remove('active');
-            let clickedNumber = e.target.textContent;
+           document.querySelector('.active').classList.remove('active');
+           let clickedNumber = e.target;
             clickedNumber.className = 'active';
-            showPage(list, clickedNumber);
+            showPage(list, clickedNumber.textContent);
         }
     });
 }
@@ -77,10 +76,8 @@ addPagination(data);
 
 //1.Add a Search Component
 
-//select the place were the search is going to show
 const headSearch = document.querySelector('.header');
 let searchEngine = '';
-//add to the html like in previous functions
 // NOTE: I add an id - btnSearch - to used in the next step, for more specificity
 searchEngine += `
                     <label for="search" class="student-search">
@@ -102,10 +99,8 @@ const submit = document.querySelector('#btnSearch');
 
 
 function searchForm(searchInput, list) {
-    //create a new student list based on the search matches 
     let newList = [];
     for (let i = 0; i < list.length; i++) {
-        //create a string that contains the full name
         studentName = `${list[i].name.first} ${list[i].name.last}`;
         if (studentName.toLowerCase().includes(searchInput.value.toLowerCase())) {
             newList.push(list[i])
@@ -116,7 +111,7 @@ function searchForm(searchInput, list) {
 
     
     showPage(newList, 1)
-   addPagination(newList);
+    addPagination(newList);
 
     //4.Handle No Search Matches
     //secondConditional - if the value is 
